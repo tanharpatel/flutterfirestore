@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirestore/Screens/Home.dart';
+import 'package:flutterfirestore/Screens/Select.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
     bool newuser = (username.getBool('login') ?? true);
     uname = username?.getString('uname');
     if(newuser == false) {
-      Navigator.pushReplacementNamed(context, Home.id);
+      Navigator.pushReplacementNamed(context, Select.id);
     }
   }
 
@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
               child: Text("Login"),
               onPressed: () {
                 setUname();
-                Navigator.popAndPushNamed(context, Home.id);
+                Navigator.popAndPushNamed(context, Select.id);
               }
             ),
           ],

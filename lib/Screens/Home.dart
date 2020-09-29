@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirestore/Screens/Login.dart';
-import 'package:flutterfirestore/Services/Database.dart';
-import 'package:flutterfirestore/main.dart';
+import 'package:flutterfirestore/Services/CarDB.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +14,7 @@ class _HomeState extends State<Home> {
 
   String ownerName, enteredName, uname;
   bool hasOwner, isOwner;
-  CarDatabase db = CarDatabase();
+  CarDB db = CarDB();
   SharedPreferences username;
   TextEditingController ownerNameCtrl = TextEditingController();
 
@@ -56,40 +54,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     if(hasOwner == null) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text("Buy Car"),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.logout),
-              tooltip: "Logout",
-              onPressed: () {
-                username?.setString('username', null);
-                username?.setBool('login', false);
-                Navigator.popAndPushNamed(context, Login.id);
-              },
-            ),
-          ],
-        ),
+        appBar: AppBar(title: Text("Buy Car"),),
         body: SafeArea(
           child: Center(child: Container(child: CircularProgressIndicator(),)),
         ),
       );
     } else {
       return Scaffold(
-        appBar: AppBar(
-          title: Text("Buy Car"),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.logout),
-              tooltip: "Logout",
-              onPressed: () {
-                username?.setString('username', null);
-                username?.setBool('login', true);
-                Navigator.popAndPushNamed(context, Login.id);
-              },
-            ),
-          ],
-        ),
+        appBar: AppBar(title: Text("Buy Car"),),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
